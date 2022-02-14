@@ -73,7 +73,7 @@ void GPIO_write_port(gpio_port_name_t port_name, uint32_t data)
 }
 uint32_t GPIO_read_port(gpio_port_name_t port_name)
 {
-	//test
+	//test 2
 //TODO: Edgar
 }
 uint8_t GPIO_read_pin(gpio_port_name_t port_name, uint8_t pin)
