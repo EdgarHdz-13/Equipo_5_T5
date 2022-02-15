@@ -4,7 +4,7 @@
  *  Created on: 11 feb. 2021
  *      Author: LUISPIZANO
  */
-
+#include <stdint.h>
 
 void delay(uint16_t delay)
 {

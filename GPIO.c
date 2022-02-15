@@ -11,7 +11,7 @@
  */
 #include "MK64F12.h"
 #include "GPIO.h"
-
+#include "Bits.h"
 
 uint8_t GPIO_clock_gating(gpio_port_name_t port_name)
 {
@@ -45,19 +45,19 @@ uint8_t GPIO_pin_control_register(gpio_port_name_t port_name, uint8_t pin,const 
 	switch(port_name)
 		{
 		case GPIO_A:/** GPIO A is selected*/
-			PORTA->PCR[pin] = *pinControlRegister;
+			PORTA->PCR[pin] = *pin_control_register;
 			break;
 		case GPIO_B:/** GPIO B is selected*/
-			PORTB->PCR[pin] = *pinControlRegister;
+			PORTB->PCR[pin] = *pin_control_register;
 			break;
 		case GPIO_C:/** GPIO C is selected*/
-			PORTC->PCR[pin] = *pinControlRegister;
+			PORTC->PCR[pin] = *pin_control_register;
 			break;
 		case GPIO_D:/** GPIO D is selected*/
-			PORTD->PCR[pin] = *pinControlRegister;
+			PORTD->PCR[pin] = *pin_control_register;
 			break;
 		case GPIO_E: /** GPIO E is selected*/
-			PORTE->PCR[pin]= *pinControlRegister;
+			PORTE->PCR[pin]= *pin_control_register;
 		default:/**If doesn't exist the option*/
 			return(FALSE);
 		break;
@@ -102,7 +102,27 @@ uint8_t GPIO_read_pin(gpio_port_name_t port_name, uint8_t pin)
 }
 void GPIO_set_pin(gpio_port_name_t port_name, uint8_t pin)
 {
+	switch(port_name)
+	{
+        case GPIO_A:/** GPIO A is selected*/
+            GPIOA->PSOR |= 1<<pin;
+		break;
+        case GPIO_B:/** GPIO B is selected*/
+        	GPIOB->PSOR |= 1<<pin;
+        break;
+        case GPIO_C:/** GPIO C is selected*/
+        	GPIOC->PSOR |= 1<<pin;
+        break;
+        case GPIO_D:/** GPIO D is selected*/
+        	GPIOD->PSOR |= 1<<pin;
+        break;
+        case GPIO_E: /** GPIO E is selected*/
+        	GPIOE->PSOR |= 1<<pin;
+        break;
+        default:/**If doesn't exist the option*/
 
+        break;
+    }
 //TODO: Edgar
 }
 void GPIO_clear_pin(gpio_port_name_t port_name, uint8_t pin)
