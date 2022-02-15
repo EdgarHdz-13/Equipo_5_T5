@@ -35,6 +35,9 @@ int main(void) {
 	GPIO_write_port(GPIO_B, GPIOB_OFF_CONST);
 
 
+
+
+
 	for (;;) {
 
 		if(!GPIO_read_pin(GPIO_C, bit_6))

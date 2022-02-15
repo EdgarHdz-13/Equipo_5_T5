@@ -42,7 +42,7 @@ uint8_t GPIO_clock_gating(gpio_port_name_t port_name)
 uint8_t GPIO_pin_control_register(gpio_port_name_t port_name, uint8_t pin,const gpio_pin_control_register_t*  pin_control_register)
 {
 
-	switch(port_name)
+    switch(port_name)
 		{
 		case GPIO_A:/** GPIO A is selected*/
 			PORTA->PCR[pin] = *pin_control_register;
@@ -73,8 +73,8 @@ void GPIO_write_port(gpio_port_name_t port_name, uint32_t data)
 }
 uint32_t GPIO_read_port(gpio_port_name_t port_name)
 {
-	switch(port_name)
-	{
+    switch(port_name)
+    {
         case GPIO_A:/** GPIO A is selected*/
             return (uint32_t)(GPIOA->PDIR);
 		break;
@@ -102,7 +102,7 @@ uint8_t GPIO_read_pin(gpio_port_name_t port_name, uint8_t pin)
 }
 void GPIO_set_pin(gpio_port_name_t port_name, uint8_t pin)
 {
-	switch(port_name)
+    switch(port_name)
 	{
         case GPIO_A:/** GPIO A is selected*/
             GPIOA->PSOR |= 1<<pin;
@@ -123,7 +123,6 @@ void GPIO_set_pin(gpio_port_name_t port_name, uint8_t pin)
 
         break;
     }
-//TODO: Edgar
 }
 void GPIO_clear_pin(gpio_port_name_t port_name, uint8_t pin)
 {
@@ -132,8 +131,27 @@ void GPIO_clear_pin(gpio_port_name_t port_name, uint8_t pin)
 }
 void GPIO_toogle_pin(gpio_port_name_t port_name, uint8_t pin)
 {
+    switch(port_name)
+	{
+        case GPIO_A:/** GPIO A is selected*/
+            GPIOA->PTOR |= 1<<pin;
+		break;
+        case GPIO_B:/** GPIO B is selected*/
+        	GPIOB->PTOR |= 1<<pin;
+        break;
+        case GPIO_C:/** GPIO C is selected*/
+        	GPIOC->PTOR |= 1<<pin;
+        break;
+        case GPIO_D:/** GPIO D is selected*/
+        	GPIOD->PTOR |= 1<<pin;
+        break;
+        case GPIO_E: /** GPIO E is selected*/
+        	GPIOE->PTOR |= 1<<pin;
+        break;
+        default:/**If doesn't exist the option*/
 
-//TODO: Edgar
+        break;
+    }
 }
 void GPIO_data_direction_port(gpio_port_name_t port_name ,uint32_t direction)
 {
