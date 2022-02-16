@@ -36,6 +36,7 @@ typedef enum{
 
 \param[in]  RGB_color_name RGB to turn on.
 \return void
+
 */
 void RGB_initialize(rgb_color RGB_color_name);
 /********************************************************************************************/

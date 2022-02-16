@@ -6,9 +6,9 @@
  */
 #include "stdint.h"
 
-void delay(uint16_t delay)
+void delay(uint32_t delay)
 {
-	volatile uint16_t j;
+	volatile uint32_t j;
 
 	for(j = delay; j > 0; j--)
 	{

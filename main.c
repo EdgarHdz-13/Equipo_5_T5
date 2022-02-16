@@ -1,61 +1,81 @@
 
+#include <stdint.h>
 #include "MK64F12.h"
-#include "GPIO.h"
+#include "RGB.h"
 #include "Delay.h"
+#include "SWITCH.h"
 #include "Bits.h"
 
-#define GPIOB_OFF_CONST (0xFFFFFFFFU)
-#define GPIOB_ON_CONST (0U)
-#define DELAY_CONST 65000
+#define DELAY_CONST 900000
 
-gpio_pin_control_register_t pcr_gpiob_pin_21 = GPIO_MUX1;
-gpio_pin_control_register_t pcr_gpiob_pin_22 = GPIO_MUX1;
-gpio_pin_control_register_t pcr_gpioc_pin_6 = GPIO_MUX1|GPIO_PE|GPIO_PS;
-
-
+typedef enum{
+	        NOTHING_pressed,
+			SW2_pressed,
+			SW3_pressed,
+			BOTH_pressed
+            }SW_status;
+typedef enum{
+	        G,
+			B,
+			P,
+			R,
+			Y,
+			W
+            }order;
 int main(void) {
 
-	initialize_rgb(RED);
-	initialize_rgb(BLUE);
-	initialize_rgb(GREEN);
-	initialize_SWITCH(SW2);
-	initialize_SWITCH(SW3);
-	/*GPIO_clock_gating(GPIO_B);
-	GPIO_clock_gating(GPIO_C);
+    uint8_t state_RGB = 0;
+    uint8_t state_switch = 0;
+    RGB_initialize_all();
 
-	GPIO_pin_control_register(GPIO_B,bit_21,&pcr_gpiob_pin_21);
-	GPIO_pin_control_register(GPIO_B,bit_22,&pcr_gpiob_pin_22);
-	GPIO_pin_control_register(GPIO_C,bit_6,&pcr_gpioc_pin_6);
+    SW_initialize_switch(SW3,PULLUP);
+    SW_initialize_switch(SW2,PULLUP);
+
+	for (;;)
+	{
+		state_switch = (SW_read_switch_state(SW2)) | (SW_read_switch_state(SW3)<<1);
+        switch(state_switch)
+        {
+            case SW2_pressed:
+            	state_RGB = (state_RGB > G) ? (state_RGB-1) : Y;
+            	delay(DELAY_CONST);
+            break;
+            case SW3_pressed:
+            	state_RGB = (state_RGB < Y) ? (state_RGB+1) : G;
+            	delay(DELAY_CONST);
+            break;
+            case BOTH_pressed:
+            	state_RGB = W;
+            	delay(DELAY_CONST);
+            break;
+            case NOTHING_pressed:
+            default:
+            break;
+        }
+        switch(state_RGB)
+        {
+            case G:
+            	RGB_turn_on(GREEN);
+            break;
+            case B:
+            	RGB_turn_on(BLUE);
+            break;
+            case P:
+            	RGB_turn_on(PURPLE);
+            break;
+            case R:
+            	RGB_turn_on(RED);
+            break;
+            case Y:
+            	RGB_turn_on(YELLOW);
+            break;
+            case W:
+            	RGB_turn_on(WHITE);
+            break;
+        }
 
 
-	GPIO_write_port(GPIO_B, GPIOB_OFF_CONST);
 
-	GPIO_data_direction_pin(GPIO_B,GPIO_OUTPUT, bit_21);
-	GPIO_data_direction_pin(GPIO_B,GPIO_OUTPUT,bit_22);
-	GPIO_data_direction_pin(GPIO_C,GPIO_INPUT, bit_6);
-
-	GPIO_write_port(GPIO_B, GPIOB_ON_CONST);
-	delay(DELAY_CONST);
-	GPIO_write_port(GPIO_B, GPIOB_OFF_CONST);*/
-
-
-
-
-
-	for (;;) {
-
-		if(!GPIO_read_pin(GPIO_C, bit_6))
-		{
-			GPIO_clear_pin(GPIO_B, bit_21);
-			delay(DELAY_CONST);
-			GPIO_set_pin(GPIO_B, bit_21);
-			delay(DELAY_CONST);
-			GPIO_clear_pin(GPIO_B, bit_22);
-			delay(DELAY_CONST);
-			GPIO_set_pin(GPIO_B, bit_22);
-		}
-
-		}
-
+	}
     return 0 ;
 }
