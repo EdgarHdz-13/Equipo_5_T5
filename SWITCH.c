@@ -51,15 +51,17 @@ void SW_initialize_switch(switch_button sw_button, switch_state state)
 			}// end switch
 }
 
-uint8_t SW_read_switch_state(switch_button sw_button)
+boolean_t SW_read_switch_state(switch_button sw_button)
 {
 	switch(sw_button)
 			{
 				case SW2:
-					return GPIO_read_pin(GPIO_C, SW2_PIN);
+					boolean_t data = (boolean_t) ~(GPIO_read_pin(GPIO_C, SW2_PIN));
+					return data;
 				break;
 				case SW3:
-					return GPIO_read_pin(GPIO_A, SW3_PIN);
+					boolean_t data = (boolean_t) ~(GPIO_read_pin(GPIO_C, SW2_PIN));
+					return data;
 				break;
 				default: /**If doesn't exist the option*/
 					return(FALSE);
