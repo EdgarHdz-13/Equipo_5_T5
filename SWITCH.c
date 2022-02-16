@@ -61,7 +61,7 @@ boolean_t SW_read_switch_state(switch_button sw_button)
 				break;
 				case SW3:
 					//**It is necessary to do a mask with 1 to recover the correct value of the pin*/
-					return (boolean_t) (~(GPIO_read_pin(GPIO_C, SW3_PIN))&0x1);
+					return (boolean_t) (~(GPIO_read_pin(GPIO_A, SW3_PIN))&0x1);
 				break;
 				default: /**If doesn't exist the option*/
 					return(FALSE);
