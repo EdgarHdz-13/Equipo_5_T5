@@ -18,6 +18,6 @@ typedef enum{
 void SW_initialize_switch(switch_button sw_button, switch_state state);
 
 
-uint8_t SW_read_switch_state(switch_button);
+boolean_t SW_read_switch_state(switch_button);
 
 #endif /* DELAY_H_ */
