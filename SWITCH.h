@@ -2,6 +2,7 @@
 #define SWITCH_H_
 
 #include "stdint.h"
+#include "bits.h"
 
 #define SW2_PIN 6
 
