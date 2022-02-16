@@ -83,7 +83,44 @@ void RGB_initialize_all()
 
 void RGB_turn_on(rgb_color RGB_color_name)
 {
-
+    switch(RGB_color_name)
+    {
+        case RED:
+            GPIO_clear_pin(GPIO_B,RED_PIN);
+            GPIO_set_pin(GPIO_B,BLUE_PIN);
+            GPIO_set_pin(GPIO_B,GREEN_PIN);
+        break;
+        case BLUE:
+            GPIO_set_pin(GPIO_B,RED_PIN);
+            GPIO_clear_pin(GPIO_B,BLUE_PIN);
+            GPIO_set_pin(GPIO_B,GREEN_PIN);
+        break;
+        case GREEN:
+            GPIO_set_pin(GPIO_B,RED_PIN);
+            GPIO_set_pin(GPIO_B,BLUE_PIN);
+            GPIO_clear_pin(GPIO_B,GREEN_PIN);
+        break;
+        case PURPLE:
+            GPIO_clear_pin(GPIO_B,RED_PIN);
+            GPIO_clear_pin(GPIO_B,BLUE_PIN);
+            GPIO_set_pin(GPIO_B,GREEN_PIN);
+        break;
+        case YELLOW:
+            GPIO_clear_pin(GPIO_B,RED_PIN);
+            GPIO_set_pin(GPIO_B,BLUE_PIN);
+            GPIO_clear_pin(GPIO_B,GREEN_PIN);
+        break;
+        case CYAN:
+            GPIO_set_pin(GPIO_B,RED_PIN);
+            GPIO_clear_pin(GPIO_B,BLUE_PIN);
+            GPIO_clear_pin(GPIO_B,GREEN_PIN);
+        break;
+        case WHITE:
+            GPIO_clear_pin(GPIO_B,RED_PIN);
+            GPIO_clear_pin(GPIO_B,BLUE_PIN);
+            GPIO_clear_pin(GPIO_B,GREEN_PIN);
+        break;
+    }
 }
 
 void RGB_turn_off(rgb_color RGB_color_name)
