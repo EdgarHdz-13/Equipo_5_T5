@@ -62,6 +62,7 @@ uint8_t SW_read_switch_state(switch_button sw_button)
 					return GPIO_read_pin(GPIO_A, SW3_PIN);
 				break;
 				default: /**If doesn't exist the option*/
+					return(FALSE);
 				break;
 			}// end switch
 }
