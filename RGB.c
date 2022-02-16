@@ -88,37 +88,37 @@ void RGB_turn_on(rgb_color RGB_color_name)
         case RED:
             GPIO_clear_pin(GPIO_B,RED_PIN);
             GPIO_set_pin(GPIO_B,BLUE_PIN);
-            GPIO_set_pin(GPIO_B,GREEN_PIN);
+            GPIO_set_pin(GPIO_E,GREEN_PIN);
         break;
         case BLUE:
             GPIO_set_pin(GPIO_B,RED_PIN);
             GPIO_clear_pin(GPIO_B,BLUE_PIN);
-            GPIO_set_pin(GPIO_B,GREEN_PIN);
+            GPIO_set_pin(GPIO_E,GREEN_PIN);
         break;
         case GREEN:
             GPIO_set_pin(GPIO_B,RED_PIN);
             GPIO_set_pin(GPIO_B,BLUE_PIN);
-            GPIO_clear_pin(GPIO_B,GREEN_PIN);
+            GPIO_clear_pin(GPIO_E,GREEN_PIN);
         break;
         case PURPLE:
             GPIO_clear_pin(GPIO_B,RED_PIN);
             GPIO_clear_pin(GPIO_B,BLUE_PIN);
-            GPIO_set_pin(GPIO_B,GREEN_PIN);
+            GPIO_set_pin(GPIO_E,GREEN_PIN);
         break;
         case YELLOW:
             GPIO_clear_pin(GPIO_B,RED_PIN);
             GPIO_set_pin(GPIO_B,BLUE_PIN);
-            GPIO_clear_pin(GPIO_B,GREEN_PIN);
+            GPIO_clear_pin(GPIO_E,GREEN_PIN);
         break;
         case CYAN:
             GPIO_set_pin(GPIO_B,RED_PIN);
             GPIO_clear_pin(GPIO_B,BLUE_PIN);
-            GPIO_clear_pin(GPIO_B,GREEN_PIN);
+            GPIO_clear_pin(GPIO_E,GREEN_PIN);
         break;
         case WHITE:
             GPIO_clear_pin(GPIO_B,RED_PIN);
             GPIO_clear_pin(GPIO_B,BLUE_PIN);
-            GPIO_clear_pin(GPIO_B,GREEN_PIN);
+            GPIO_clear_pin(GPIO_E,GREEN_PIN);
         break;
     }
 }
@@ -134,7 +134,7 @@ void RGB_turn_off(rgb_color RGB_color_name)
             GPIO_set_pin(GPIO_B,BLUE_PIN);
         break;
         case GREEN:
-            GPIO_set_pin(GPIO_B,GREEN_PIN);
+            GPIO_set_pin(GPIO_E,GREEN_PIN);
         break;
         case PURPLE:
             GPIO_set_pin(GPIO_B,RED_PIN);
@@ -142,16 +142,16 @@ void RGB_turn_off(rgb_color RGB_color_name)
         break;
         case YELLOW:
             GPIO_set_pin(GPIO_B,RED_PIN);
-            GPIO_set_pin(GPIO_B,GREEN_PIN);
+            GPIO_set_pin(GPIO_E,GREEN_PIN);
         break;
         case CYAN:
             GPIO_set_pin(GPIO_B,BLUE_PIN);
-            GPIO_set_pin(GPIO_B,GREEN_PIN);
+            GPIO_set_pin(GPIO_E,GREEN_PIN);
         break;
         case WHITE:
             GPIO_set_pin(GPIO_B,RED_PIN);
             GPIO_set_pin(GPIO_B,BLUE_PIN);
-            GPIO_set_pin(GPIO_B,GREEN_PIN);
+            GPIO_set_pin(GPIO_E,GREEN_PIN);
         break;
     }
 }
