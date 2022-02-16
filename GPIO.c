@@ -86,7 +86,6 @@ void GPIO_write_port(gpio_port_name_t port_name, uint32_t data)
         	GPIOE->PDOR = data;
         break;
         default:/**If doesn't exist the option*/
-            return (FALSE);
         break;
     }
 }
@@ -198,7 +197,6 @@ void GPIO_clear_pin(gpio_port_name_t port_name, uint8_t pin)
         	GPIOE->PCOR |= mask_pin<<pin;
         break;
         default:/**If doesn't exist the option*/
-            return (FALSE);
         break;
     }
 }
@@ -255,7 +253,7 @@ void GPIO_data_direction_pin(gpio_port_name_t port_name, uint8_t state, uint8_t 
     switch(port_name)
 	{
         case GPIO_A:/** GPIO A is selected*/
-            if(TRUE = state)
+            if(TRUE == state)
             {
                 GPIOA->PDDR |= 1<<pin;    //Configure pin as general-purpose input
             }
@@ -265,7 +263,7 @@ void GPIO_data_direction_pin(gpio_port_name_t port_name, uint8_t state, uint8_t 
         	}
 		break;
         case GPIO_B:/** GPIO B is selected*/
-            if(TRUE = state)
+            if(TRUE == state)
             {
                 GPIOB->PDDR |= 1<<pin;    //Configure pin as general-purpose input
             }
@@ -275,7 +273,7 @@ void GPIO_data_direction_pin(gpio_port_name_t port_name, uint8_t state, uint8_t 
             }
         break;
         case GPIO_C:/** GPIO C is selected*/
-            if(TRUE = state)
+            if(TRUE == state)
             {
                 GPIOC->PDDR |= 1<<pin;    //Configure pin as general-purpose input
             }
@@ -285,7 +283,7 @@ void GPIO_data_direction_pin(gpio_port_name_t port_name, uint8_t state, uint8_t 
             }
         break;
         case GPIO_D:/** GPIO D is selected*/
-            if(TRUE = state)
+            if(TRUE == state)
             {
                 GPIOD->PDDR |= 1<<pin;    //Configure pin as general-purpose input
             }
@@ -295,7 +293,7 @@ void GPIO_data_direction_pin(gpio_port_name_t port_name, uint8_t state, uint8_t 
             }
         break;
         case GPIO_E: /** GPIO E is selected*/
-            if(TRUE = state)
+            if(TRUE == state)
             {
                 GPIOE->PDDR |= 1<<pin;    //Configure pin as general-purpose input
             }
