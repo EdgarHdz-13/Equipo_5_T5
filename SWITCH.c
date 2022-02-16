@@ -51,7 +51,7 @@ void SW_initialize_switch(switch_button sw_button, switch_state state)
 			}// end switch
 }
 
-uint8_t SW_read_switch_state(switch_button)
+uint8_t SW_read_switch_state(switch_button sw_button)
 {
 	switch(sw_button)
 			{
