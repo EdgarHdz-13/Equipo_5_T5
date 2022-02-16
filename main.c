@@ -15,8 +15,12 @@ gpio_pin_control_register_t pcr_gpioc_pin_6 = GPIO_MUX1|GPIO_PE|GPIO_PS;
 
 int main(void) {
 
-
-	GPIO_clock_gating(GPIO_B);
+	initialize_rgb(RED);
+	initialize_rgb(BLUE);
+	initialize_rgb(GREEN);
+	initialize_SWITCH(SW2);
+	initialize_SWITCH(SW3);
+	/*GPIO_clock_gating(GPIO_B);
 	GPIO_clock_gating(GPIO_C);
 
 	GPIO_pin_control_register(GPIO_B,bit_21,&pcr_gpiob_pin_21);
@@ -32,7 +36,7 @@ int main(void) {
 
 	GPIO_write_port(GPIO_B, GPIOB_ON_CONST);
 	delay(DELAY_CONST);
-	GPIO_write_port(GPIO_B, GPIOB_OFF_CONST);
+	GPIO_write_port(GPIO_B, GPIOB_OFF_CONST);*/
 
 
 
