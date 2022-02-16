@@ -3,9 +3,9 @@
 
 #include "stdint.h"
 
-#define SW2_PIN 4
+#define SW2_PIN 6
 
-#define SW3_PIN 6
+#define SW3_PIN 4
 
 typedef enum{
 	SW2,SW3
