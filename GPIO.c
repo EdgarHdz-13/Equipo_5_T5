@@ -160,8 +160,62 @@ void GPIO_data_direction_port(gpio_port_name_t port_name ,uint32_t direction)
 }
 void GPIO_data_direction_pin(gpio_port_name_t port_name, uint8_t state, uint8_t pin)
 {
+    switch(port_name)
+	{
+        case GPIO_A:/** GPIO A is selected*/
+            if(TRUE = state)
+            {
+                GPIOA->PDDR |= 1<<pin;    //Configure pin as general-purpose input
+            }
+        	else
+        	{
+                GPIOA->PDDR &= ~(1<<pin); //Configure pin as general-purpose output
+        	}
+		break;
+        case GPIO_B:/** GPIO B is selected*/
+            if(TRUE = state)
+            {
+                GPIOB->PDDR |= 1<<pin;    //Configure pin as general-purpose input
+            }
+        	else
+            {
+                GPIOB->PDDR &= ~(1<<pin); //Configure pin as general-purpose output
+            }
+        break;
+        case GPIO_C:/** GPIO C is selected*/
+            if(TRUE = state)
+            {
+                GPIOC->PDDR |= 1<<pin;    //Configure pin as general-purpose input
+            }
+        	else
+            {
+                GPIOC->PDDR &= ~(1<<pin); //Configure pin as general-purpose output
+            }
+        break;
+        case GPIO_D:/** GPIO D is selected*/
+            if(TRUE = state)
+            {
+                GPIOD->PDDR |= 1<<pin;    //Configure pin as general-purpose input
+            }
+        	else
+            {
+                GPIOD->PDDR &= ~(1<<pin); //Configure pin as general-purpose output
+            }
+        break;
+        case GPIO_E: /** GPIO E is selected*/
+            if(TRUE = state)
+            {
+                GPIOE->PDDR |= 1<<pin;    //Configure pin as general-purpose input
+            }
+        	else
+            {
+                GPIOE->PDDR &= ~(1<<pin); //Configure pin as general-purpose output
+            }
+        break;
+        default:/**If doesn't exist the option*/
 
-//TODO: Edgar
+        break;
+    }
 }
 
 
