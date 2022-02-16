@@ -14,7 +14,7 @@
 // Constant that represent the pin number where is the red led
 #define BLUE_PIN 21
 // Constant that represent the pin number where is the red led
-#define GREEN_PIN 27
+#define GREEN_PIN 26
 
 /*! These constants are used to select an color for the RGB*/
 typedef enum{
