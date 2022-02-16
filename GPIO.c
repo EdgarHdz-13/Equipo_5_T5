@@ -228,8 +228,27 @@ void GPIO_toogle_pin(gpio_port_name_t port_name, uint8_t pin)
 }
 void GPIO_data_direction_port(gpio_port_name_t port_name ,uint32_t direction)
 {
+    switch(port_name)
+	{
+        case GPIO_A:/** GPIO A is selected*/
+            GPIOA->PDDR = direction;
+		break;
+        case GPIO_B:/** GPIO B is selected*/
+        	GPIOB->PDDR = direction;
+        break;
+        case GPIO_C:/** GPIO C is selected*/
+        	GPIOC->PDDR = direction;
+        break;
+        case GPIO_D:/** GPIO D is selected*/
+        	GPIOD->PDDR = direction;
+        break;
+        case GPIO_E: /** GPIO E is selected*/
+        	GPIOE->PDDR = direction;
+        break;
+        default:/**If doesn't exist the option*/
 
-//TODO: Victor
+        break;
+    }
 }
 void GPIO_data_direction_pin(gpio_port_name_t port_name, uint8_t state, uint8_t pin)
 {
