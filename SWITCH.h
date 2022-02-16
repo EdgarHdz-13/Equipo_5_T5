@@ -1,7 +1,7 @@
-#ifndef DELAY_H_
-#define DELAY_H_
+#ifndef SWITCH_H_
+#define SWITCH_H_
 
-#include <stdint.h>
+#include "stdint.h"
 
 #define SW2_PIN 4
 
