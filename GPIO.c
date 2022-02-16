@@ -116,8 +116,41 @@ uint32_t GPIO_read_port(gpio_port_name_t port_name)
 }
 uint8_t GPIO_read_pin(gpio_port_name_t port_name, uint8_t pin)
 {
+	uint8_t pin_data = 0x0;
+	uint8_t mask_pin = 0x1;
+	uint32_t GPIO_data = 0x0;
 
-//TODO: Victor
+    switch(port_name)
+    {
+        case GPIO_A:/** GPIO A is selected*/
+        	GPIO_data = GPIOA->PDIR >> pin;
+        	pin_data = GPIO_data & mask_pin;
+            return pin_data;
+		break;
+        case GPIO_B:/** GPIO B is selected*/
+        	GPIO_data = GPIOB->PDIR >> pin;
+        	pin_data = GPIO_data & mask_pin;
+            return pin_data;
+        break;
+        case GPIO_C:/** GPIO C is selected*/
+        	GPIO_data = GPIOC->PDIR >> pin;
+        	pin_data = GPIO_data & mask_pin;
+            return pin_data;
+        break;
+        case GPIO_D:/** GPIO D is selected*/
+        	GPIO_data = GPIOD->PDIR >> pin;
+        	pin_data = GPIO_data & mask_pin;
+            return pin_data;
+        break;
+        case GPIO_E: /** GPIO E is selected*/
+        	GPIO_data = GPIOE->PDIR >> pin;
+        	pin_data = GPIO_data & mask_pin;
+            return pin_data;
+        break;
+        default:/**If doesn't exist the option*/
+            return (FALSE);
+        break;
+    }
 }
 void GPIO_set_pin(gpio_port_name_t port_name, uint8_t pin)
 {
