@@ -178,8 +178,29 @@ void GPIO_set_pin(gpio_port_name_t port_name, uint8_t pin)
 }
 void GPIO_clear_pin(gpio_port_name_t port_name, uint8_t pin)
 {
+	uint8_t mask_pin = 0x1;
 
-//TODO: Victor
+    switch(port_name)
+    {
+        case GPIO_A:/** GPIO A is selected*/
+        	GPIOA->PCOR |= mask_pin<<pin;
+		break;
+        case GPIO_B:/** GPIO B is selected*/
+        	GPIOB->PCOR |= mask_pin<<pin;
+        break;
+        case GPIO_C:/** GPIO C is selected*/
+        	GPIOC->PCOR |= mask_pin<<pin;
+        break;
+        case GPIO_D:/** GPIO D is selected*/
+        	GPIOD->PCOR |= mask_pin<<pin;
+        break;
+        case GPIO_E: /** GPIO E is selected*/
+        	GPIOE->PCOR |= mask_pin<<pin;
+        break;
+        default:/**If doesn't exist the option*/
+            return (FALSE);
+        break;
+    }
 }
 void GPIO_toogle_pin(gpio_port_name_t port_name, uint8_t pin)
 {
