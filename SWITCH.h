@@ -3,12 +3,21 @@
 
 #include <stdint.h>
 
+#define SW2_PIN 4
+
+#define SW3_PIN 6
+
 typedef enum{
 	SW2,SW3
 }switch_button;
 
-void initialize_switch(switch_button sw_button);
+typedef enum{
+	PULLUP,PULLDOWN
+}switch_state;
 
-uint8_t read_switch_state(switch_button);
+void SW_initialize_switch(switch_button sw_button, switch_state state);
+
+
+uint8_t SW_read_switch_state(switch_button);
 
 #endif /* DELAY_H_ */
