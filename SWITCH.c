@@ -10,8 +10,8 @@
 #include "GPIO.h"
 #include "SWITCH.h"
 
-static gpio_pin_control_register_t pcr_SW2_pin = GPIO_MUX1;
-static gpio_pin_control_register_t pcr_SW3_pin = GPIO_MUX1;
+static gpio_pin_control_register_t pcr_SWPS_pin = GPIO_MUX1|GPIO_PS;
+static gpio_pin_control_register_t pcr_SWPE_pin = GPIO_MUX1|GPIO_PE;
 
 void SW_initialize_switch(switch_button sw_button, switch_state state)
 {
@@ -23,10 +23,10 @@ void SW_initialize_switch(switch_button sw_button, switch_state state)
 					switch(state)
 					{
 					case PULLUP:
-						GPIO_pin_control_register(GPIO_C,SW2_PIN,&(pcr_SW2_pin&GPIO_PS));
+						GPIO_pin_control_register(GPIO_C,SW2_PIN,&pcr_SWPS_pin);
 						break;
 					case PULLDOWN:
-						GPIO_pin_control_register(GPIO_C,SW2_PIN,&(pcr_SW2_pin&GPIO_PE));
+						GPIO_pin_control_register(GPIO_C,SW2_PIN,&pcr_SWPE_pin);
 						break;
 					default:
 						break;
@@ -37,10 +37,10 @@ void SW_initialize_switch(switch_button sw_button, switch_state state)
 					switch(state)
 					{
 					case PULLUP:
-						GPIO_pin_control_register(GPIO_A,SW3_PIN,&(pcr_SW3_pin&GPIO_PS));
+						GPIO_pin_control_register(GPIO_A,SW3_PIN,&pcr_SWPS_pin);
 						break;
 					case PULLDOWN:
-						GPIO_pin_control_register(GPIO_A,SW3_PIN,&(pcr_SW3_pin&GPIO_PE));
+						GPIO_pin_control_register(GPIO_A,SW3_PIN,&pcr_SWPE_pin);
 						break;
 					default:
 						break;
