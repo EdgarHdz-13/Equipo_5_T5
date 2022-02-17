@@ -68,7 +68,7 @@ uint8_t GPIO_pin_control_register(gpio_port_name_t port_name, uint8_t pin,const 
 
 void GPIO_write_port(gpio_port_name_t port_name, uint32_t data)
 {
-    switch(port_name)
+    switch(port_name) /** Selecting the GPIO for writing the PDOR*/
     {
         case GPIO_A:/** GPIO A is selected*/
         	GPIOA->PDOR = data;
@@ -116,11 +116,12 @@ uint32_t GPIO_read_port(gpio_port_name_t port_name)
 }
 uint8_t GPIO_read_pin(gpio_port_name_t port_name, uint8_t pin)
 {
+	/**variables for read an specific pin */
 	uint8_t pin_data = 0x0;
 	uint8_t mask_pin = 0x1;
 	uint32_t GPIO_data = 0x0;
 
-    switch(port_name)
+    switch(port_name)/** Selecting the GPIO for reading a specific pin*/
     {
         case GPIO_A:/** GPIO A is selected*/
         	GPIO_data = GPIOA->PDIR >> pin;
@@ -180,7 +181,7 @@ void GPIO_clear_pin(gpio_port_name_t port_name, uint8_t pin)
 {
 	uint8_t mask_pin = 0x1;
 
-    switch(port_name)
+    switch(port_name)/** Selecting the GPIO for clearing a specific pin*/
     {
         case GPIO_A:/** GPIO A is selected*/
         	GPIOA->PCOR |= mask_pin<<pin;
@@ -228,7 +229,7 @@ void GPIO_toogle_pin(gpio_port_name_t port_name, uint8_t pin)
 }
 void GPIO_data_direction_port(gpio_port_name_t port_name ,uint32_t direction)
 {
-    switch(port_name)
+    switch(port_name) /** Selecting the GPIO for writing the data direction port*/
 	{
         case GPIO_A:/** GPIO A is selected*/
             GPIOA->PDDR = direction;
