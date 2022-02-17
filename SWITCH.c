@@ -10,7 +10,7 @@
 #include "GPIO.h"
 #include "SWITCH.h"
 
-static gpio_pin_control_register_t pcr_SWPS_pin = GPIO_MUX1|GPIO_PS;
+static gpio_pin_control_register_t pcr_SWPS_pin = GPIO_MUX1|GPIO_PE;
 static gpio_pin_control_register_t pcr_SWPE_pin = GPIO_MUX1|GPIO_PE;
 
 void SW_initialize_switch(switch_button sw_button, switch_state state)
