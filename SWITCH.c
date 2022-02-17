@@ -15,36 +15,35 @@ static gpio_pin_control_register_t pcr_SWPE_pin = GPIO_MUX1|GPIO_PE;
 
 void SW_initialize_switch(switch_button sw_button, switch_state state)
 {
-	//** Implement switch case to initialize nswitch. Must do clok gating and PCR config
-	switch(sw_button)
+	switch(sw_button) //**Selecting switch ports for initialize clock enabling and PCR Config */
 			{
 				case SW2:
-					GPIO_clock_gating(GPIO_C);
-					switch(state)
+					GPIO_clock_gating(GPIO_C); /** GPIO C is selected*/
+					switch(state)/** Configures the PCR by the state required*/
 					{
-					case PULLUP:
+					case PULLUP: /** PULLUP is configured*/
 						GPIO_pin_control_register(GPIO_C,SW2_PIN,&pcr_SWPS_pin);
-						break;
-					case PULLDOWN:
+					break;
+					case PULLDOWN: /** PULLDOWN is configured*/
 						GPIO_pin_control_register(GPIO_C,SW2_PIN,&pcr_SWPE_pin);
 						break;
 					default:
 						break;
-					}
+					}// end switch
 				break;
 				case SW3:
-					GPIO_clock_gating(GPIO_A);
-					switch(state)
+					GPIO_clock_gating(GPIO_A); /** GPIO A is selected*/
+					switch(state)/** Configures the PCR by the state required*/
 					{
-					case PULLUP:
+					case PULLUP:/** PULLUP is configured*/
 						GPIO_pin_control_register(GPIO_A,SW3_PIN,&pcr_SWPS_pin);
 						break;
-					case PULLDOWN:
+					case PULLDOWN: /** PULLUP is configured*/
 						GPIO_pin_control_register(GPIO_A,SW3_PIN,&pcr_SWPE_pin);
 						break;
 					default:
 						break;
-					}
+					}// end switch
 				break;
 				default: /**If doesn't exist the option*/
 				break;
@@ -53,7 +52,7 @@ void SW_initialize_switch(switch_button sw_button, switch_state state)
 
 boolean_t SW_read_switch_state(switch_button sw_button)
 {
-	switch(sw_button)
+	switch(sw_button) //**Selecting switch ports for return the actual value */
 			{
 				case SW2:
 					//**It is necessary to do a mask with 1 to recover the correct value of the pin*/
