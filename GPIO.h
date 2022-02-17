@@ -136,7 +136,7 @@ uint8_t GPIO_pin_control_register(gpio_port_name_t port_name, uint8_t pin, gpio_
 /********************************************************************************************/
 /*!
  	 \brief
- 	 	 This function configure all the GPIO port as input when 1 logic is written or output when 0 logic is written.
+ 	 	 This function configure all the GPIO port as input when 0 logic is written or output when 1 logic is written.
  	 \param[in] port_name Port to configure
  	 \param[in] direction Input value to specify the port as input or output.
  	 \return void
