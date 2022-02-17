@@ -4,7 +4,7 @@
 #include "stdint.h"
 #include "bits.h"
 
-/** Constant that represent the pin that corresponds to the seond switch*/
+/** Constant that represent the pin that corresponds to the second switch*/
 #define SW2_PIN 6
 /** Constant that represent the pin that corresponds to the third switch*/
 #define SW3_PIN 4
